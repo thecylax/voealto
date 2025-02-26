@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Submit Form{% endblock %}
+
+{% block content %}
+<section class="section box">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <h1 class="title has-text-centered">Novo orçamento</h1>
+                <form id="budgetItem" method="post">
+                    {% csrf_token %}
+                    {{ formset.management_form }}
+                    {{ select_client_form.as_p }}
+                    <br>
+                    {{ budget_item_formset.management_form}}
+                    {{ budget_item_formset.as_p }}
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+                <button class="btn btn-secondary" type="button" hx-get="{% url 'formset' %}" hx-target="#budgetItem" hx-swap=""beforeend>Adicionar</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

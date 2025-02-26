@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 box" style="width: 100%; max-width: 400px;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Faça seu login para continuar</h5>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuário</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        {{ form.username }}
+                    </div>
+                    {% if form.username.errors %}
+                    <div class="text-danger">{{ form.username.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        {{ form.password }}
+                    </div>
+                    {% if form.password.errors %}
+                    <div class="text-danger">{{ form.password.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

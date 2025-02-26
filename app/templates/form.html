@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}Orçamento{% endblock %}
+
+{% block content %}
+<section class="section box">
+    <div class="container">
+        <h1 class="title has-text-centered">Novo orçamento</h1>
+        <form class="row g-2" method="post">
+            {% csrf_token %}
+            <div class="col-md-10">
+                <label class="label">Cliente</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-address-book"></i>
+                    </span>
+                    {{ select_client_form.client }}
+                </div>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <a class="btn btn-success" href="{% url 'client_create' %}">+ Novo Cliente</a>
+            </div>
+
+            <hr>
+            <p>Origem</p>
+            <div class="col-md-6">
+                <label class="form-label">{{ context_form.origin_city.label }}</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-plane-departure"></i>
+                    </span>
+                    {{ context_form.origin_city }}
+                    {% if context_form.origin_city.errors %}
+                    <p class="text-danger">{{ context_form.origin_city.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">{{ context_form.origin_iata.label }}</label>
+                {{ context_form.origin_iata }}
+                {% if context_form.origin_iata.errors %}
+                <p class="text-danger">{{ context_form.origin_iata.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">{{ context_form.departure_date.label }}</label>
+                <input type="date" class="form-control" name="{{ context_form.departure_date.name }}" />
+                {% if context_form.departure_date.errors %}
+                <p class="text-danger">{{ context_form.departure_date.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">{{ context_form.departure_time.label }}</label>
+                {{ context_form.departure_time }}
+                {% if context_form.departure_time.errors %}
+                <p class="text-danger">{{ context_form.departure_time.errors }}</p>
+                {% endif %}
+            </div>
+
+
+
+            <div class="col-md-6">
+                <label class="form-label">{{ context_form.destiny_city.label }}</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-plane-arrival"></i>
+                    </span>
+                    {{ context_form.destiny_city }}
+                    {% if context_form.destiny_city.errors %}
+                    <p class="text-danger">{{ context_form.destiny_city.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">{{ context_form.destiny_iata.label }}</label>
+                {{ context_form.destiny_iata }}
+                {% if context_form.destiny_iata.errors %}
+                <p class="text-danger">{{ context_form.destiny_iata.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">{{ context_form.arrive_date.label }}</label>
+                <input type="date" class="form-control" name="{{ context_form.arrive_date.name }}" />
+                {% if context_form.arrive_date.errors %}
+                <p class="text-danger">{{ context_form.arrive_date.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">{{ context_form.arrive_time.label }}</label>
+                {{ context_form.arrive_time }}
+                {% if context_form.arrive_time.errors %}
+                <p class="text-danger">{{ context_form.arrive_time.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="col-md-12">
+                <label class="form-label">{{ context_form.ticket_value.label }}</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-money-check-dollar"></i>
+                    </span>
+                    <input type="text" class="form-control" name="{{ context_form.ticket_value.name }}" />
+                    {% if context_form.ticket_value.errors %}
+                    <p class="text-danger">{{ context_form.ticket_value.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-12 text-end">
+                <button class="btn btn-success" type="submit">
+                    <i class="fas fa-save"></i> Salvar
+                </button>
+                <button class="btn btn-primary" type="submit" name="save_add_new">
+                    <i class="fas fa-plus"></i>Incluir item
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

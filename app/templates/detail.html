@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1 class="title">Orçamento - {{ context.budget_id }}</h1><div class="box">
+    {% for item in context.items.all %}
+    <p class="subtitle is-4">Origem: <i class="subtitle">{{ item.origin_city }} ({{ item.origin_iata }})</i></p>
+    <p class="title is-4">Data de Partida: <i class="subtitle">{{ item.departure_date }}</i></p>
+    <p class="title is-4">Hora de Partida: <i class="subtitle is-3">{{ item.departure_time }}</i></p>
+    <p class="title is-4">Destino: <i class="subtitle is-3">{{ item.destiny_city }} ({{ item.destiny_iata }})</i></p>
+    <p class="title is-4">Data de Chegada: <i class="subtitle is-3">{{ item.arrive_date }}</i></p>
+    <p class="title is-4">Hora de Chegada: <i class="subtitle is-3">{{ item.arrive_time }}</i></p>
+    <p class="title is-4">Valor do Bilhete: R$ <i class="subtitle is-3">{{ item.ticket_value|floatformat:2 }}</i></p>
+    {% endfor %}
+</div>
+
+{% endblock %}

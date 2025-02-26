@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Submit Form{% endblock %}
+
+{% block content %}
+<section class="section box">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <h1 class="title has-text-centered">Novo cliente</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ client_form.as_p }}
+                    <a class="btn btn-secondary" href="{% url 'client_view' %}">Cancelar</a>
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

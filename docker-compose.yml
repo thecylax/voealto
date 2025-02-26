@@ -1,0 +1,41 @@
+services:
+  valto_db:
+    image: postgres:15
+    container_name: valto_db
+    environment:
+     - POSTGRES_DB=${DATABASE_NAME}
+     - POSTGRES_USER=${DATABASE_USER}
+     - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+    - '5432:5432'
+    volumes:
+     - pg_data:/var/lib/postgresql/data
+
+  valto_api:
+    build: .
+    container_name: valto_api
+    image: valto_api:latest
+    ports:
+      - '8000:8000'
+    env_file:
+      - .env
+    depends_on:
+      - valto_db
+    command: gunicorn voealto.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/app/staticfiles
+
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: valto_nginx
+  #   ports:
+  #     - '80:80'
+  #   volumes:
+  #     - static_volume:/app/staticfiles
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  #   depends_on:
+  #     - valto_api
+
+volumes:
+  pg_data:
+  static_volume:
