@@ -17,8 +17,8 @@ services:
     image: valto_api:latest
     ports:
       - '5000:5000'
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     depends_on:
       - valto_db
     command: gunicorn voealto.wsgi:application --bind 0.0.0.0:5000
