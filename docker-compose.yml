@@ -16,7 +16,7 @@ services:
     container_name: valto_api
     image: valto_api:latest
     ports:
-      - '5000:5000'
+      - '5001:5000'
     # env_file:
     #   - .env
     depends_on:
