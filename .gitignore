@@ -3,3 +3,5 @@
 .env
 static/*
 *.sqlite3
+staticfiles/*
+app/static/output/*

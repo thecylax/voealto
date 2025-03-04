@@ -1,0 +1,33 @@
+/* filepath: /home/cardoso/code/voealto/voealto/app/static/css/styles.css */
+
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  overflow-y: auto;
+  background-image: url("/static/images/blue_background.jpg");
+  background-size: cover;
+  background-position: center center no-repeat;
+}
+
+
+.box {
+  /* margin-top: 5rem; */
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  /* border-radius: 8px; */
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-left: 10px;
+}
