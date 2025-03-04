@@ -7,7 +7,7 @@ services:
      - POSTGRES_USER=${DATABASE_USER}
      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
     ports:
-    - '5432:5432'
+    - '54322:5432'
     volumes:
      - pg_data:/var/lib/postgresql/data
 
@@ -16,7 +16,7 @@ services:
     container_name: valto_api
     image: valto_api:latest
     ports:
-      - '5000:5000'
+      - '5001:5000'
     # env_file:
     #   - .env
     depends_on:
