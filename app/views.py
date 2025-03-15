@@ -1,13 +1,15 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.forms import formset_factory
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
-from app.models import BudgetItem, Client, Budget
+from app.models import Budget, BudgetItem, Client
 
-from .forms import BudgetItemForm, ClientForm, LoginForm, SelectClientForm
+from .forms import (BudgetItemForm, BudgetItemSearchForm, ClientForm,
+                    LoginForm, SelectClientForm)
 from .utils import render_template
 
 
@@ -16,9 +18,29 @@ def home(request):
 
 @login_required
 def history(request):
-    context_items = Budget.objects.all()
+    budget_id = None
+    if request.method == 'GET':
+        form = BudgetItemSearchForm(request.GET)
+        if form.is_valid():
+            budget_id = form.cleaned_data.get('budget_id')
+    else:
+        form = BudgetItemSearchForm()
 
-    return render(request, 'list.html', {'context_items': context_items})
+    if budget_id:
+        context_items = Budget.objects.filter(budget_id=budget_id)
+    else:
+        context_items = Budget.objects.all()
+
+    paginator = Paginator(context_items, 10)  # Mostra 10 orçamentos por página
+    page = request.GET.get('page')
+    try:
+        context_items = paginator.page(page)
+    except PageNotAnInteger:
+        context_items = paginator.page(1)
+    except EmptyPage:
+        context_items = paginator.page(paginator.num_pages)
+
+    return render(request, 'list.html', {'context_items': context_items, 'budget_item_search_form': form})
 
 @login_required
 def budget_detail(request, budget_id):

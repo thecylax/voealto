@@ -248,19 +248,19 @@
               style="fill:#f2f0f0;fill-opacity:1;stroke:#f2f0f0;stroke-width:0.0997092;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
               id="block_02_{{ loop.index0 }}" width="39.900291" height="29.90029" x="56.2299" y="{{ 102.04986 + general.offset * loop.index0 }}" />
           <text xml:space="preserve"
-              style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.24556px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#034c8c;fill-opacity:1;stroke:none;stroke-width:0.0999995;stroke-linecap:round;stroke-dasharray:none"
-              x="63.078438" y="{{ 118.20898 + general.offset * loop.index0 }}" id="destiny_city_{{ loop.index0 }}">
+              style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.24556px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:middle;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#034c8c;fill-opacity:1;stroke:none;stroke-width:0.0999995;stroke-linecap:round;stroke-dasharray:none"
+              x="76.168686" y="{{ 115.01938 + general.offset * loop.index0 }}" id="destiny_city_{{ loop.index0 }}">
               <tspan sodipodi:role="line" id="tspan_destiny_city_{{ loop.index0 }}"
                   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.24556px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#034c8c;fill-opacity:1;stroke:none;stroke-width:0.0999995"
-                  x="63.078438" y="{{ 118.20898 + general.offset * loop.index0 }}">{{ row.destiny_city }}
+                  x="76.168686" y="{{ 115.01938 + general.offset * loop.index0 }}">{{ row.destiny_city }}
               </tspan>
           </text>
           <text xml:space="preserve"
-              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.24556px;font-family:Montserrat;-inkscape-font-specification:Montserrat;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#034c8c;fill-opacity:1;stroke:none;stroke-width:0.0999995;stroke-linecap:round;stroke-dasharray:none"
-              x="82.128433" y="{{ 118.20898 + general.offset * loop.index0 }}" id="destiny_iata_{{ loop.index0 }}">
+              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.24556px;font-family:Montserrat;-inkscape-font-specification:Montserrat;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:middle;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#034c8c;fill-opacity:1;stroke:none;stroke-width:0.0999995;stroke-linecap:round;stroke-dasharray:none"
+              x="76.095665" y="{{ 121.36936 + general.offset * loop.index0 }}" id="destiny_iata_{{ loop.index0 }}">
               <tspan sodipodi:role="line" id="tspan_destiny_iata_{{ loop.index0 }}"
                   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.24556px;font-family:Montserrat;-inkscape-font-specification:Montserrat;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#034c8c;fill-opacity:1;stroke:none;stroke-width:0.0999995"
-                  x="82.128433" y="{{ 118.20898 + general.offset * loop.index0 }}">{{ row.destiny_iata }}
+                  x="76.095665" y="{{ 121.36936 + general.offset * loop.index0 }}">{{ row.destiny_iata }}
               </tspan>
           </text>
           <rect
@@ -314,10 +314,10 @@
           </text>
           <text xml:space="preserve"
               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#034c8c;fill-opacity:1;stroke:none;stroke-width:0.0999995;stroke-linecap:round;stroke-dasharray:none"
-              x="108.04456" y="{{ 127.82911 + general.offset * loop.index0 }}" id="departure_time_{{ loop.index0 }}">
+              x="106.01057" y="{{ 127.82911 + general.offset * loop.index0 }}" id="departure_time_{{ loop.index0 }}">
               <tspan sodipodi:role="line" id="tspan_departure_time_{{ loop.index0 }}"
                   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:Montserrat;-inkscape-font-specification:Montserrat;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#034c8c;fill-opacity:1;stroke:none;stroke-width:0.0999995"
-                  x="108.04456" y="{{ 127.82911 + general.offset * loop.index0 }}">{{ row.departure_time }}
+                  x="106.01057" y="{{ 127.82911 + general.offset * loop.index0 }}">{{ row.departure_time }}
               </tspan>
           </text>
           <rect

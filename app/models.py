@@ -11,6 +11,7 @@ class Client(models.Model):
 
 class BudgetItem(models.Model):
     budget = models.ForeignKey('Budget', on_delete=models.CASCADE, related_name='items')
+    airline = models.CharField(max_length=255)
     origin_city = models.CharField(max_length=255)
     origin_iata = models.CharField(max_length=3)
     departure_date = models.DateField()
@@ -37,6 +38,9 @@ class Budget(models.Model):
             self.budget_id = f'{now.year}{now.month:02d}{self.pk:06d}'
             kwargs['force_insert'] = False
         super().save(*args, **kwargs)
+
+    def get_total_ticket_value(self):
+            return self.items.aggregate(total=models.Sum('ticket_value'))['total'] or 0
 
     def __str__(self):
         return f"{self.client} - {self.budget_id}"
