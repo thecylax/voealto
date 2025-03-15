@@ -4,4 +4,5 @@
 static/*
 *.sqlite3
 staticfiles/*
-app/static/output/*
+app/static/output/output.svg
+app/static/output/resultado.pdf
