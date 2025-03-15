@@ -41,12 +41,12 @@ class BudgetItemForm(forms.ModelForm):
             'airline': 'Companhia Aérea',
             'origin_city': 'Cidade de Origem',
             'origin_iata': 'IATA',
-            'departure_date': 'Data de Partida',
-            'departure_time': 'Hora de Partida',
+            'departure_date': 'Data de Ida',
+            'departure_time': 'Hora de Ida',
             'destiny_city': 'Cidade de Destino',
             'destiny_iata': 'IATA',
-            'arrive_date': 'Data de Chegada',
-            'arrive_time': 'Hora de Chegada',
+            'arrive_date': 'Data de Volta',
+            'arrive_time': 'Hora de Volta',
             'ticket_value': 'Valor do Bilhete',
         }
         widgets = {
