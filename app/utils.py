@@ -4,19 +4,35 @@ from typing import Dict
 
 import cairosvg
 from django.conf import settings
+from django.template.loader import get_template
 from jinja2 import Environment, FileSystemLoader
 
 
 def format_date(value: datetime.date):
-    if isinstance(value, datetime.date):
+    if value and isinstance(value, datetime.date):
         return value.strftime('%d/%m/%Y')
+    return "--/--/----"
+
+def format_time(value, format="%H:%M"):
+    """Formata um objeto de tempo para exibir apenas horas e minutos."""
+    if value:
+        return value.strftime(format)
+    return "--:--"  # Valor padrão para campos NULL
+
+def format_decimal(value):
+    """Formata um valor decimal para usar vírgula como separador."""
+    if value is not None:
+        return f"{value:.2f}".replace(".", ",")
+    return "0,00"  # Valor padrão para campos NULL
 
 def render_template(data: Dict, context):
     # Carregar o template
     template_dir = os.path.join(settings.BASE_DIR, 'app/templates/pdf')
     env = Environment(loader=FileSystemLoader(template_dir))
     env.filters['format_date'] = format_date
-    template = env.get_template('template_jinja.svg')
+    env.filters['format_time'] = format_time
+    env.filters['format_decimal'] = format_decimal
+    template = env.get_template('template_v2_jinja.svg')
 
     offset = 31.76
     if isinstance(context, list):
@@ -28,7 +44,7 @@ def render_template(data: Dict, context):
     local_date = data['date'].astimezone(local_tz)
     general = {
         'offset': offset,
-        'total_value': f'{total_value:.2f}',
+        'total_value': total_value,
         'today': local_date.strftime('%d/%m/%Y %H:%M:%S'),
         'last_y': last_y + 35.30,
     }

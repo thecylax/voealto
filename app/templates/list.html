@@ -3,32 +3,85 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1 class="title">Lista de Orçamentos</h1>
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Orçamento</th>
-            <th scope="col">Data</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Opções</th>
-            <th scope="col">Valor Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for budget in context_items %}
-        <tr>
-            <td scope="row">
-                <a href="{% url 'budget_detail' budget.budget_id %}" class="link-primary">{{ budget.budget_id }}</a>
-                <a href="{% url 'render_pdf' budget.budget_id %}" target="_blank" class="text-danger">
-                    <i class="bi bi-filetype-pdf"></i>
+<section class="section box">
+
+    <h1 class="title font">Lista de Orçamentos</h1>
+
+    <form method="GET" action="{% url 'budget_list' %}" class="mb-3">
+        <div class="input-group mb-3">
+            <span class="input-group-text">
+                <i class="bi bi-search"></i>
+            </span>
+            {{ budget_item_search_form.budget_id}}
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </div>
+    </form>
+
+    <table class="table table-striped table-hover font p-10">
+        <thead>
+            <tr>
+                <th scope="col">Orçamento</th>
+                <th scope="col">Data</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Opções</th>
+                <th scope="col">Valor Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for budget in context_items %}
+            <tr>
+                <td scope="row">
+                    <a href="{% url 'budget_detail' budget.budget_id %}" class="link-primary">{{ budget.budget_id }}</a>
+                    <a href="{% url 'render_pdf' budget.budget_id %}" target="_blank" class="text-danger">
+                        <i class="bi bi-filetype-pdf"></i>
+                    </a>
+                </td>
+                <td>{{ budget.date_time|date:"d/m/Y H:i" }}</td>
+                <td>{{ budget.client.name }}</td>
+                <td>{{ budget.items.count }}</td>
+                <td>R$ {{ budget.get_total_ticket_value|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if not context_items %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title font">{{ budget_item_search_form.budget_id.value }}</h5>
+                    <p class="card-text font">Nenhum documento encontrado com esse identificador.</p>
+                    <a href="{% url 'budget_list' %}" class="btn btn-primary">Voltar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Paginação -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-sm justify-content-end">
+            {% if context_items.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ context_items.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
                 </a>
-            </td>
-            <td>{{ budget.date_time|date:"d/m/Y H:i" }}</td>
-            <td>{{ budget.client.name }}</td>
-            <td>{{ budget.items.count }}</td>
-            <td>R$ 0</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+            </li>
+            {% endif %}
+            {% for num in context_items.paginator.page_range %}
+            <li class="page-item {% if context_items.number == num %}active{% endif %}">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% endfor %}
+            {% if context_items.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ context_items.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</section>
 {% endblock %}

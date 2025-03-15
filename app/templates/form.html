@@ -5,11 +5,11 @@
 {% block content %}
 <section class="section box">
     <div class="container">
-        <h1 class="title has-text-centered">Novo orçamento</h1>
+        <h1 class="title has-text-centered font">Novo orçamento</h1>
         <form class="row g-2" method="post">
             {% csrf_token %}
             <div class="col-md-10">
-                <label class="label">Cliente</label>
+                <label class="label font">Cliente</label>
                 <div class="input-group">
                     <span class="input-group-text">
                         <i class="fas fa-address-book"></i>
@@ -22,9 +22,21 @@
             </div>
 
             <hr>
-            <p>Origem</p>
+            <div class="col-md-12">
+                <label class="form-label font">{{ context_form.airline.label }}</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-plane"></i>
+                    </span>
+                    {{ context_form.airline }}
+                    {% if context_form.airline.errors %}
+                    <p class="text-danger">{{ context_form.airline.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
             <div class="col-md-6">
-                <label class="form-label">{{ context_form.origin_city.label }}</label>
+                <label class="form-label font">{{ context_form.origin_city.label }}</label>
                 <div class="input-group">
                     <span class="input-group-text">
                         <i class="fas fa-plane-departure"></i>
@@ -37,7 +49,7 @@
             </div>
 
             <div class="col-md-2">
-                <label class="form-label">{{ context_form.origin_iata.label }}</label>
+                <label class="form-label font">{{ context_form.origin_iata.label }}</label>
                 {{ context_form.origin_iata }}
                 {% if context_form.origin_iata.errors %}
                 <p class="text-danger">{{ context_form.origin_iata.errors }}</p>
@@ -45,7 +57,7 @@
             </div>
 
             <div class="col-md-2">
-                <label class="form-label">{{ context_form.departure_date.label }}</label>
+                <label class="form-label font">{{ context_form.departure_date.label }}</label>
                 <input type="date" class="form-control" name="{{ context_form.departure_date.name }}" />
                 {% if context_form.departure_date.errors %}
                 <p class="text-danger">{{ context_form.departure_date.errors }}</p>
@@ -53,7 +65,7 @@
             </div>
 
             <div class="col-md-2">
-                <label class="form-label">{{ context_form.departure_time.label }}</label>
+                <label class="form-label font">{{ context_form.departure_time.label }}</label>
                 {{ context_form.departure_time }}
                 {% if context_form.departure_time.errors %}
                 <p class="text-danger">{{ context_form.departure_time.errors }}</p>
@@ -63,7 +75,7 @@
 
 
             <div class="col-md-6">
-                <label class="form-label">{{ context_form.destiny_city.label }}</label>
+                <label class="form-label font">{{ context_form.destiny_city.label }}</label>
                 <div class="input-group">
                     <span class="input-group-text">
                         <i class="fas fa-plane-arrival"></i>
@@ -76,7 +88,7 @@
             </div>
 
             <div class="col-md-2">
-                <label class="form-label">{{ context_form.destiny_iata.label }}</label>
+                <label class="form-label font">{{ context_form.destiny_iata.label }}</label>
                 {{ context_form.destiny_iata }}
                 {% if context_form.destiny_iata.errors %}
                 <p class="text-danger">{{ context_form.destiny_iata.errors }}</p>
@@ -84,7 +96,7 @@
             </div>
 
             <div class="col-md-2">
-                <label class="form-label">{{ context_form.arrive_date.label }}</label>
+                <label class="form-label font">{{ context_form.arrive_date.label }}</label>
                 <input type="date" class="form-control" name="{{ context_form.arrive_date.name }}" />
                 {% if context_form.arrive_date.errors %}
                 <p class="text-danger">{{ context_form.arrive_date.errors }}</p>
@@ -92,7 +104,7 @@
             </div>
 
             <div class="col-md-2">
-                <label class="form-label">{{ context_form.arrive_time.label }}</label>
+                <label class="form-label font">{{ context_form.arrive_time.label }}</label>
                 {{ context_form.arrive_time }}
                 {% if context_form.arrive_time.errors %}
                 <p class="text-danger">{{ context_form.arrive_time.errors }}</p>
@@ -100,7 +112,7 @@
             </div>
 
             <div class="col-md-12">
-                <label class="form-label">{{ context_form.ticket_value.label }}</label>
+                <label class="form-label font">{{ context_form.ticket_value.label }}</label>
                 <div class="input-group">
                     <span class="input-group-text">
                         <i class="fas fa-money-check-dollar"></i>
