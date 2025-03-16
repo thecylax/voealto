@@ -13,11 +13,11 @@
     <p class="subtitle is-3">Informações:</p>
     {% for item in context %}
         <p class="is-2">Origem: <i>{{ item.origin_city }} ({{ item.origin_iata }})</i></p>
-        <p class="is-2">Data de Partida: <i>{{ item.departure_date }}</i></p>
-        <p class="is-2">Hora de Partida: <i>{{ item.departure_time }}</i></p>
+        <p class="is-2">Data de Ida: <i>{{ item.departure_date }}</i></p>
+        <p class="is-2">Hora de Ida: <i>{{ item.departure_time }}</i></p>
         <p class="is-2">Destino: <i>{{ item.destiny_city }} ({{ item.destiny_iata }})</i></p>
-        <p class="is-2">Data de Chegada: <i>{{ item.arrive_date }}</i></p>
-        <p class="is-2">Hora de Chegada: <i>{{ item.arrive_time }}</i></p>
+        <p class="is-2">Data de Volta: <i>{{ item.arrive_date }}</i></p>
+        <p class="is-2">Hora de Volta: <i>{{ item.arrive_time }}</i></p>
         <p class="is-2">Valor do Bilhete: R$ <i>{{ item.ticket_value|floatformat:2 }}</i></p>
     {% endfor %}
 

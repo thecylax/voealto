@@ -31,8 +31,8 @@ class SelectClientForm(forms.Form):
 
 class BudgetItemForm(forms.ModelForm):
     ticket_value = CommaSeparatedDecimalField(max_digits=10, decimal_places=2)
-    departure_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label='Data de Partida')
-    arrive_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label='Data de Chegada')
+    departure_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label='Data de Ida')
+    arrive_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label='Data de Volta')
 
     class Meta:
         model = BudgetItem

@@ -157,9 +157,11 @@ THOUSAND_SEPARATOR = '.'
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'app/static',
-]
+if os.environ.get('DJANGO_ENV') != 'prod':
+    STATICFILES_DIRS = [
+        BASE_DIR / 'app/static',
+    ]
+
 STATIC_ROOT = '/app/staticfiles/'
 
 # Default primary key field type
